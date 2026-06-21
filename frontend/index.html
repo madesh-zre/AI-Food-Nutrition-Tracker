@@ -1,41 +1,59 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>AI Food Tracker</title>
+
+    <!-- ✅ CSS LINK (PHASE 5 UI UPGRADE) -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🍎 AI Food Nutrition Tracker</h1>
+<div class="container">
 
-<input type="file" id="foodImage" accept="image/*" onchange="previewImage(event)">
-<br><br>
+    <h1>🍎 AI Food Nutrition Tracker</h1>
 
-<img id="preview" width="200" style="display:none; border-radius:10px;">
-<br><br><br><br>
+    <!-- IMAGE UPLOAD -->
+    <input type="file" id="foodImage" accept="image/*" onchange="previewImage(event)">
+    <br><br>
 
-<input type="number" id="weight" placeholder="Enter weight in grams"><br><br>
+    <img id="preview" width="200" style="display:none; border-radius:10px;">
+    <br><br>
 
-<button onclick="analyzeFood()">Analyze Food</button>
+    <!-- WEIGHT INPUT -->
+    <input type="number" id="weight" placeholder="Enter weight in grams">
+    <br><br>
 
-<h2>Results:</h2>
+    <!-- BUTTON -->
+    <button onclick="analyzeFood()">Analyze Food</button>
 
-<p>Food: <span id="foodName">---</span></p>
-<p>Calories: <span id="calories">---</span></p>
-<p>Protein: <span id="protein">---</span></p>
-<p>Carbs: <span id="carbs">---</span></p>
-<p>Fat: <span id="fat">---</span></p>
+    <hr>
 
+    <!-- RESULTS -->
+    <h2>Results:</h2>
+
+    <p>Food: <span id="foodName">---</span></p>
+    <p>Calories: <span id="calories">---</span></p>
+    <p>Protein: <span id="protein">---</span></p>
+    <p>Carbs: <span id="carbs">---</span></p>
+    <p>Fat: <span id="fat">---</span></p>
+
+    <hr>
+
+    <!-- HISTORY -->
+    <h2>📅 Meal History</h2>
+    <ul id="mealList"></ul>
+
+    <h3>🔥 Daily Total</h3>
+    <p>Calories: <span id="totalCalories">0</span></p>
+    <p>Protein: <span id="totalProtein">0</span></p>
+    <p>Carbs: <span id="totalCarbs">0</span></p>
+    <p>Fat: <span id="totalFat">0</span></p>
+
+</div>
+
+<!-- JS FILE -->
 <script src="script.js"></script>
-<h2>📅 Meal History</h2>
-<ul id="mealList"></ul>
-
-<h3>🔥 Daily Total</h3>
-<p>Calories: <span id="totalCalories">0</span></p>
-<p>Protein: <span id="totalProtein">0</span></p>
-<p>Carbs: <span id="totalCarbs">0</span></p>
-<p>Fat: <span id="totalFat">0</span></p>
 
 </body>
 </html>
