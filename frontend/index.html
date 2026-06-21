@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Food Tracker</title>
+    <title>AI Food Nutrition Tracker</title>
 
-    <!-- ✅ CSS LINK (PHASE 5 UI UPGRADE) -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,24 +12,20 @@
 
     <h1>🍎 AI Food Nutrition Tracker</h1>
 
-    <!-- IMAGE UPLOAD -->
     <input type="file" id="foodImage" accept="image/*" onchange="previewImage(event)">
     <br><br>
 
-    <img id="preview" width="200" style="display:none; border-radius:10px;">
+    <img id="preview" width="200" style="display:none;">
     <br><br>
 
-    <!-- WEIGHT INPUT -->
     <input type="number" id="weight" placeholder="Enter weight in grams">
     <br><br>
 
-    <!-- BUTTON -->
     <button onclick="analyzeFood()">Analyze Food</button>
 
     <hr>
 
-    <!-- RESULTS -->
-    <h2>Results:</h2>
+    <h2>Results</h2>
 
     <p>Food: <span id="foodName">---</span></p>
     <p>Calories: <span id="calories">---</span></p>
@@ -40,7 +35,6 @@
 
     <hr>
 
-    <!-- HISTORY -->
     <h2>📅 Meal History</h2>
     <ul id="mealList"></ul>
 
@@ -50,9 +44,10 @@
     <p>Carbs: <span id="totalCarbs">0</span></p>
     <p>Fat: <span id="totalFat">0</span></p>
 
+    <button onclick="clearMeals()">Clear History</button>
+
 </div>
 
-<!-- JS FILE -->
 <script src="script.js"></script>
 
 </body>
