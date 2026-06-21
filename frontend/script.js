@@ -19,3 +19,21 @@ async function detectFood(imageFile) {
 
     return foodName;
 }
+function saveMeal(foodName, weight, calories, protein, carbs, fat) {
+
+    let meals = JSON.parse(localStorage.getItem("meals")) || [];
+
+    let meal = {
+        foodName,
+        weight,
+        calories,
+        protein,
+        carbs,
+        fat,
+        time: new Date().toLocaleString()
+    };
+
+    meals.push(meal);
+
+    localStorage.setItem("meals", JSON.stringify(meals));
+}
