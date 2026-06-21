@@ -1,20 +1,21 @@
-function previewImage(event) {
-    let image = document.getElementById("preview");
-    image.src = URL.createObjectURL(event.target.files[0]);
-    image.style.display = "block";
-}
-function analyzeFood() {
-    let weight = document.getElementById("weight").value;
+async function detectFood(imageFile) {
 
-    if (!weight) {
-        alert("Please enter food weight");
-        return;
-    }
+    let formData = new FormData();
+    formData.append("file", imageFile);
 
-    // Dummy data for now (we will replace with AI later)
-    document.getElementById("foodName").innerText = "Chicken Rice";
-    document.getElementById("calories").innerText = weight * 2.5;
-    document.getElementById("protein").innerText = weight * 0.1;
-    document.getElementById("carbs").innerText = weight * 0.3;
-    document.getElementById("fat").innerText = weight * 0.05;
+    let response = await fetch(
+        "YOUR_API_URL_HERE?api_key=YOUR_API_KEY_HERE",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    let data = await response.json();
+
+    console.log("AI RESPONSE:", data);
+
+    let foodName = data?.predictions?.[0]?.class || "unknown";
+
+    return foodName;
 }
