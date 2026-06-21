@@ -5,7 +5,7 @@ function previewImage(event) {
     image.style.display = "block";
 }
 
-// ===== AI FOOD DETECTION =====
+// ===== AI DETECTION =====
 async function detectFood(imageFile) {
 
     let formData = new FormData();
@@ -24,7 +24,7 @@ async function detectFood(imageFile) {
     return data?.predictions?.[0]?.class || "unknown";
 }
 
-// ===== SAVE DATA =====
+// ===== SAVE =====
 function saveMeal(foodName, weight, calories, protein, carbs, fat) {
 
     let meals = JSON.parse(localStorage.getItem("meals")) || [];
@@ -42,7 +42,7 @@ function saveMeal(foodName, weight, calories, protein, carbs, fat) {
     localStorage.setItem("meals", JSON.stringify(meals));
 }
 
-// ===== LOAD DATA =====
+// ===== LOAD =====
 function loadMeals() {
 
     let meals = JSON.parse(localStorage.getItem("meals")) || [];
@@ -71,7 +71,7 @@ function loadMeals() {
     document.getElementById("totalFat").innerText = totalFat.toFixed(1);
 }
 
-// ===== MAIN FUNCTION =====
+// ===== MAIN =====
 async function analyzeFood() {
 
     let fileInput = document.getElementById("foodImage");
@@ -112,7 +112,7 @@ async function analyzeFood() {
     loadMeals();
 }
 
-// ===== CLEAR HISTORY =====
+// ===== CLEAR =====
 function clearMeals() {
     localStorage.removeItem("meals");
     loadMeals();
