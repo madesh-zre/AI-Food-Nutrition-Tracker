@@ -9,7 +9,11 @@
 
 <h1>🍎 AI Food Nutrition Tracker</h1>
 
-<input type="file" id="foodImage"><br><br>
+<input type="file" id="foodImage" accept="image/*" onchange="previewImage(event)">
+<br><br>
+
+<img id="preview" width="200" style="display:none; border-radius:10px;">
+<br><br><br><br>
 
 <input type="number" id="weight" placeholder="Enter weight in grams"><br><br>
 
