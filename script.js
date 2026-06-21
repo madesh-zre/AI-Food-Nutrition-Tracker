@@ -1,4 +1,6 @@
-// ===== IMAGE PREVIEW =====
+let chart;
+
+// ===== PREVIEW IMAGE =====
 function previewImage(event) {
     let image = document.getElementById("preview");
     image.src = URL.createObjectURL(event.target.files[0]);
@@ -24,7 +26,7 @@ async function detectFood(imageFile) {
     return data?.predictions?.[0]?.class || "unknown";
 }
 
-// ===== SAVE =====
+// ===== SAVE MEAL =====
 function saveMeal(foodName, weight, calories, protein, carbs, fat) {
 
     let meals = JSON.parse(localStorage.getItem("meals")) || [];
@@ -42,7 +44,7 @@ function saveMeal(foodName, weight, calories, protein, carbs, fat) {
     localStorage.setItem("meals", JSON.stringify(meals));
 }
 
-// ===== LOAD =====
+// ===== LOAD MEALS =====
 function loadMeals() {
 
     let meals = JSON.parse(localStorage.getItem("meals")) || [];
@@ -69,9 +71,33 @@ function loadMeals() {
     document.getElementById("totalProtein").innerText = totalPro.toFixed(1);
     document.getElementById("totalCarbs").innerText = totalCarb.toFixed(1);
     document.getElementById("totalFat").innerText = totalFat.toFixed(1);
+
+    updateChart(meals);
 }
 
-// ===== MAIN =====
+// ===== CHART =====
+function updateChart(meals) {
+
+    let labels = meals.map((m, i) => "Meal " + (i + 1));
+    let data = meals.map(m => m.calories);
+
+    let ctx = document.getElementById("calorieChart").getContext("2d");
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Calories",
+                data: data
+            }]
+        }
+    });
+}
+
+// ===== MAIN FUNCTION =====
 async function analyzeFood() {
 
     let fileInput = document.getElementById("foodImage");
@@ -86,6 +112,8 @@ async function analyzeFood() {
         alert("Enter weight");
         return;
     }
+
+    document.getElementById("foodName").innerText = "Analyzing...";
 
     let foodName = await detectFood(fileInput.files[0]);
 
