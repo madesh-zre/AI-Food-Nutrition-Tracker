@@ -4,7 +4,7 @@ async function detectFood(imageFile) {
     formData.append("file", imageFile);
 
     let response = await fetch(
-        "YOUR_API_URL_HERE?api_key=YOUR_API_KEY_HERE",
+        "https://universe.roboflow.com/food-segementation/food-detection-7xta0?api_key=CyE2AMcxyYOS3XmFIpov",
         {
             method: "POST",
             body: formData
