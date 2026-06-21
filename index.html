@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Food Nutrition Tracker</title>
+    <title>AI Food Nutrition Tracker PRO</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<h1>🍎 AI Food Nutrition Tracker</h1>
+<h1>🍎 AI Food Nutrition Tracker PRO</h1>
 
 <div class="container">
 
@@ -44,6 +48,11 @@
     <p>Fat: <span id="totalFat">0</span></p>
 
     <button onclick="clearMeals()">Clear History</button>
+
+    <hr>
+
+    <h3>📊 Weekly Calories Chart</h3>
+    <canvas id="calorieChart"></canvas>
 
 </div>
 
